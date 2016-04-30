@@ -23,6 +23,26 @@ class ViewController: UIViewController, POPAnimationDelegate, UIPickerViewDataSo
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(ViewController.viewDragged(_:)))
+        animView.addGestureRecognizer(pan)
+        animView.bringSubviewToFront(self.view)
+    }
+    
+    func viewDragged(pan: UIPanGestureRecognizer) {
+        if pan.state == UIGestureRecognizerState.Ended {
+            var decayAnimation = POPDecayAnimation(propertyNamed: kPOPLayerPositionX)
+            decayAnimation.velocity = pan.velocityInView(self.view).x
+            decayAnimation.deceleration = 0.99
+            pan.view?.pop_addAnimation(decayAnimation, forKey: "POPLayerPositionX")
+            decayAnimation = POPDecayAnimation(propertyNamed: kPOPLayerPositionY)
+            decayAnimation.velocity = pan.velocityInView(self.view).y
+            decayAnimation.deceleration = 0.99
+            pan.view?.pop_addAnimation(decayAnimation, forKey: "POPLayerPositionY")
+            return
+        }
+        let translation = pan.translationInView(self.view)
+        pan.view!.center = CGPointMake(pan.view!.center.x + translation.x, pan.view!.center.y + translation.y)
+        pan.setTranslation(CGPointZero, inView: self.view)
     }
 
     override func didReceiveMemoryWarning() {

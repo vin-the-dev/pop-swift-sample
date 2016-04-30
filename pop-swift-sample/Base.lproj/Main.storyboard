@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,12 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zit-ep-2oN">
-                                <rect key="frame" x="250" y="120" width="100" height="100"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-ng-8el">
+                                <rect key="frame" x="20" y="20" width="560" height="270"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zit-ep-2oN">
+                                        <rect key="frame" x="230" y="85" width="100" height="100"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="JAk-4H-Al4"/>
+                                            <constraint firstAttribute="width" constant="100" id="NcI-pT-cz9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="JAk-4H-Al4"/>
-                                    <constraint firstAttribute="width" constant="100" id="NcI-pT-cz9"/>
+                                    <constraint firstItem="Zit-ep-2oN" firstAttribute="centerY" secondItem="Ofu-ng-8el" secondAttribute="centerY" id="EkE-C2-kYw"/>
+                                    <constraint firstItem="Zit-ep-2oN" firstAttribute="centerX" secondItem="Ofu-ng-8el" secondAttribute="centerX" id="qU8-pp-h5y"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eY4-is-ekM">
@@ -54,13 +65,15 @@
                         <constraints>
                             <constraint firstItem="hcj-S3-Ffc" firstAttribute="top" secondItem="fUG-fo-yFS" secondAttribute="bottom" constant="8" id="1eA-iZ-Gpo"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eY4-is-ekM" secondAttribute="bottom" constant="20" id="1hZ-nC-NQn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ofu-ng-8el" secondAttribute="trailing" id="64j-ZH-kRF"/>
                             <constraint firstItem="hcj-S3-Ffc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="AY8-Jm-p2a"/>
-                            <constraint firstItem="Zit-ep-2oN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FoT-6T-Bgm"/>
                             <constraint firstItem="hcj-S3-Ffc" firstAttribute="centerX" secondItem="eY4-is-ekM" secondAttribute="centerX" id="Pdc-8d-vM1"/>
                             <constraint firstItem="fUG-fo-yFS" firstAttribute="centerX" secondItem="hcj-S3-Ffc" secondAttribute="centerX" id="PwP-jw-WHZ"/>
                             <constraint firstItem="eY4-is-ekM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zgs-GA-g7x"/>
                             <constraint firstItem="eY4-is-ekM" firstAttribute="top" secondItem="hcj-S3-Ffc" secondAttribute="bottom" constant="8" id="dL5-u7-OuC"/>
-                            <constraint firstItem="Zit-ep-2oN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="lPt-Zm-wsX"/>
+                            <constraint firstItem="Ofu-ng-8el" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jra-vA-YK0"/>
+                            <constraint firstItem="Ofu-ng-8el" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mgA-Sd-dRm"/>
+                            <constraint firstItem="fUG-fo-yFS" firstAttribute="top" secondItem="Ofu-ng-8el" secondAttribute="bottom" id="mqa-bZ-6tk"/>
                         </constraints>
                     </view>
                     <connections>
