@@ -29,6 +29,27 @@ class ViewController: UIViewController, POPAnimationDelegate, UIPickerViewDataSo
     }
     
     func viewDragged(pan: UIPanGestureRecognizer) {
+        
+        let movement: CGPoint
+        var rec = pan.view!.frame;
+        let imgvw = self.animView.superview!.frame;
+        if((rec.origin.x >= imgvw.origin.x && (rec.origin.x + rec.size.width <= imgvw.origin.x + imgvw.size.width)))
+        {
+            let translation = pan.translationInView(pan.view?.superview)
+            movement = translation
+            pan.view!.center = CGPointMake(pan.view!.center.x + translation.x, pan.view!.center.y + translation.y)
+            rec = pan.view!.frame
+            
+            if( rec.origin.x < imgvw.origin.x ) {
+                rec.origin.x = imgvw.origin.x;
+            }
+            if( rec.origin.x + rec.size.width > imgvw.origin.x + imgvw.size.width ) {
+                rec.origin.x = imgvw.origin.x + imgvw.size.width - rec.size.width;
+            }
+            pan.view!.frame = rec;
+            pan.setTranslation(CGPointZero, inView: pan.view?.superview)
+        }
+        
         if pan.state == UIGestureRecognizerState.Ended {
             var decayAnimation = POPDecayAnimation(propertyNamed: kPOPLayerPositionX)
             decayAnimation.velocity = pan.velocityInView(self.view).x
