@@ -2,7 +2,7 @@
 
 A sample project to showcase [pop by facebook](https://github.com/facebook/pop) with swift.
 
-Will be adding more sample soon.
+Will be adding more samples soon.
 
 Inspiration [Facebook Pop](https://github.com/maxmyers/FacebookPop)
 
