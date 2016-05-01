@@ -132,6 +132,14 @@ class ViewController: UIViewController, POPAnimationDelegate, UIPickerViewDataSo
             springAnimation.name = "POPLayerRotation"
             animView.layer.pop_addAnimation(springAnimation, forKey: "POPLayerRotation")
         }
+        if pickerView.selectedRowInComponent(0) == 9{
+            let springAnimation = POPSpringAnimation(propertyNamed: kPOPLayerCornerRadius)
+            springAnimation.toValue = (animView.frame.height / 2)
+            springAnimation.springBounciness = springBounciness
+            springAnimation.delegate = self
+            springAnimation.name = "POPLayerRotation"
+            animView.layer.pop_addAnimation(springAnimation, forKey: "POPLayerRotation")
+        }
     }
     
     let animLayerValues = ["Color",
@@ -142,12 +150,14 @@ class ViewController: UIViewController, POPAnimationDelegate, UIPickerViewDataSo
                            "Position",
                            "X Position",
                            "Y Position",
-                           "Rotation"]
+                           "Rotation",
+                           "Corner Radius"]
     let springBounciness:CGFloat = 20
     
     func viewAnimations(){
         if pickerView.selectedRowInComponent(0) == 0 {
             let basicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+            basicAnimation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
             basicAnimation.duration = intDuration
             basicAnimation.fromValue = 1
             basicAnimation.toValue = 0
